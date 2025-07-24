@@ -10,7 +10,7 @@ Dave Williams, DitroniX 2019-2025 (ditronix.net)
 
 ### FleX [ATM90E36]
 
- - **EPEM Ethernet Power Energy Monitor** 
+ - **[EPEM Ethernet Power Energy Monitor](https://github.com/DitroniX/EPEM-Ethernet-Power-Energy-Monitor)** 
 
 	- Features include EPEM ESP32-C6 ATM90E36 RTC RS-485 24C64 EEPROM 3Phase 3+1 CT-Clamps Current Voltage Frequency Power Factor GPIO I2C OLED SMPS USB
 
