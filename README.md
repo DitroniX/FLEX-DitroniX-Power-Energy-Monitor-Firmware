@@ -2,7 +2,7 @@
 
 Development Test and Bring-up Code - WORK-IN-PROGRESS 
 
-Updated 24th July 2025
+Updated 31st July 2025 (Demo on YouTube [EPEM](https://www.youtube.com/watch?v=buDLhy5ddp8&ab_channel=DitroniX))
 
 Dave Williams, DitroniX 2019-2025 (ditronix.net)
 
@@ -13,6 +13,7 @@ Dave Williams, DitroniX 2019-2025 (ditronix.net)
  - **[EPEM Ethernet Power Energy Monitor](https://github.com/DitroniX/EPEM-Ethernet-Power-Energy-Monitor)** 
 
 	- Features include EPEM ESP32-C6 ATM90E36 RTC RS-485 24C64 EEPROM 3Phase 3+1 CT-Clamps Current Voltage Frequency Power Factor GPIO I2C OLED SMPS USB
+	- Exercises the various devices on the board and even lets you publish to MQTT, or native Domoticz.
 
 ## SDK Boards
 
