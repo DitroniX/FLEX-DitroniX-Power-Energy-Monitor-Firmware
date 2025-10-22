@@ -1,19 +1,62 @@
-## FleX - DitroniX Power Energy Monitor Firmware
 
-Development Test and Bring-up Code - WORK-IN-PROGRESS 
+# FleX - DitroniX Power Energy Monitor Firmware
 
-Updated 31st July 2025 (Demo on YouTube [EPEM](https://www.youtube.com/watch?v=buDLhy5ddp8&ab_channel=DitroniX))
+## FLeX Development Code Variants
 
-Dave Williams, DitroniX 2019-2025 (ditronix.net)
-
-## **FLeX Development Code Variants:**
+The initial release is **FLEX Lite.** and it's purpose is to test the EPEM board main GPIO's and ATM90E36, on reading data and outputting.
 
 ### FleX [ATM90E36]
 
  - **[EPEM Ethernet Power Energy Monitor](https://github.com/DitroniX/EPEM-Ethernet-Power-Energy-Monitor)** 
 
-	- Features include EPEM ESP32-C6 ATM90E36 RTC RS-485 24C64 EEPROM 3Phase 3+1 CT-Clamps Current Voltage Frequency Power Factor GPIO I2C OLED SMPS USB
-	- Exercises the various devices on the board and even lets you publish to MQTT, or native Domoticz.
+This code remains in Development as a means of Test and Bring-up Code.   This accompanies the various Arduino code examples, which can be found [here](https://github.com/DitroniX/EPEM-Ethernet-Power-Energy-Monitor/tree/main/Code/ArduinoIDE).
+
+## **Test Setup**
+
+The test setup is an EPEM board, either with, or without an OLED display plugged in.
+
+Connect three CT Clamps, Input 1-3.  Placed on a single phase. known resistive load live connection.  The test baseline is using the YHDC SCT013000 100A / 50mA
+
+My test lab setup uses 300W Resistive loads and an DAT01 Mains transformer, using the 12V AC output.
+
+The Single Phase jumpers are inserted, so the 12V AC voltage on input one, is also connected to input 2 and 3.
+
+## **Jumpers**
+
+It is important to ensure the 2mm jumpers are inserted as shown below.
+
+![EPEM E36 Jumpers](https://github.com/DitroniX/EPEM-Ethernet-Power-Energy-Monitor/blob/main/Datasheets%20and%20Information/EPEM%20E36%20Jumpers.jpg)
+
+![EPEM Board Bottom](https://github.com/DitroniX/EPEM-Ethernet-Power-Energy-Monitor/blob/main/Datasheets%20and%20Information/EPEM%20E36%20Bottom.jpg)
+
+
+## **The Code**
+
+The code is developed using PlatformIO.  
+
+Launch PlatformIO and open the Flex Lite folder.
+
+
+## **Options**
+
+In the FLeX Lite Code, you have some initial test options.
+
+**Switches**
+
+ - Hardware.h
+	 - **EnableBasicLoop**
+	 *- Set to true to display, in Serial Monitor, loop readings and displaying only one per reset cycle. Default false.*
+	 - **EnableDisplayBoardConfiguration**
+	 *- Set to true to display, in Serial Monitor, board software configuration Information if DisplayFull is true. Default true.*
+	 - **EnableOLEDLoop**
+	 *- Set to true to enable OLED Display in Loop. Over-ride via I2C Scan. Check OLED Instance below, for OLED Selection.* Default true.
+
+**OLED**
+If you connect an OLED Display, the firmware should automatically detect this in the I2C Scan and enable the OLED 'driver'.
+
+**Current Clamp Inputs**
+By Default the EPEM is setup for standard YHDC SCT013000 100A / 50mA
+
 
 ## SDK Boards
 
@@ -24,7 +67,7 @@ This firmware has evolved over time and although originally was purely for bring
 This test code is OPEN SOURCE and formatted for easier viewing. It may be freely used, or modified as needed. You may use as is, use for bring-up development, simply use the bits you like! final use and for full IoT publishing. It is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 
 ## **FLeX Updates**
-  - 250724 - Placeholder
+  - 251022 - Initial Release for EPEN ATM90E36
 
 **Continual Development**
 
