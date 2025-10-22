@@ -5,6 +5,12 @@
 
 The initial release is **FLEX Lite.** and it's purpose is to test the EPEM board main GPIO's and ATM90E36, on reading data and outputting.
 
+All EPEM boards are tested using this firmware, in order to have a baseline test prior to shipping.   
+
+Powering up the board, will see LEDs flashing and the display, if connected, display the test text.
+
+[Example Video]([url](https://www.youtube.com/shorts/nOvNBkNqQBc))
+
 ### FleX [ATM90E36]
 
  - **[EPEM Ethernet Power Energy Monitor](https://github.com/DitroniX/EPEM-Ethernet-Power-Energy-Monitor)** 
