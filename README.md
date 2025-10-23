@@ -35,6 +35,10 @@ It is important to ensure the 2mm jumpers are inserted as shown below.
 
 ![EPEM Board Bottom](https://github.com/DitroniX/EPEM-Ethernet-Power-Energy-Monitor/blob/main/Datasheets%20and%20Information/EPEM%20E36%20Bottom.jpg)
 
+## **Testing**
+
+![EPEM Board Testing](https://github.com/DitroniX/EPEM-Ethernet-Power-Energy-Monitor/blob/main/Datasheets%20and%20Information/EPEM%20Testing.jpg)
+
 
 ## **The Code**
 
