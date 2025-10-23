@@ -77,7 +77,7 @@ This firmware has evolved over time and although originally was purely for bring
 This test code is OPEN SOURCE and formatted for easier viewing. It may be freely used, or modified as needed. You may use as is, use for bring-up development, simply use the bits you like! final use and for full IoT publishing. It is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 
 ## **FLeX Updates**
-  - 251022 - Initial Release for EPEN ATM90E36
+  - 251022 - Initial 251022 Release for EPEM ATM90E36
 
 **Continual Development**
 
