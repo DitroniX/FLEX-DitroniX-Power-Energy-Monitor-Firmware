@@ -31,6 +31,8 @@ The Single Phase jumpers are inserted, so the 12V AC voltage on input one, is al
 
 It is important to ensure the 2mm jumpers are inserted as shown below.
 
+**EPEM E36 Jumpers**
+
 ![EPEM E36 Jumpers](https://github.com/DitroniX/EPEM-Ethernet-Power-Energy-Monitor/blob/main/Datasheets%20and%20Information/EPEM%20E36%20Jumpers.jpg)
 
 ![EPEM Board Bottom](https://github.com/DitroniX/EPEM-Ethernet-Power-Energy-Monitor/blob/main/Datasheets%20and%20Information/EPEM%20E36%20Bottom.jpg)
@@ -67,6 +69,10 @@ If you connect an OLED Display, the firmware should automatically detect this in
 **Current Clamp Inputs**
 By Default the EPEM is setup for standard YHDC SCT013000 100A / 50mA
 
+##  EPEM Board selection in:
+
+	// On EPEM, Set required ATM90E3x device, ATM90E32_DEVICE or ATM90E36_DEVICE
+	#define ATM90DEVICE ATM90E32_DEVICE
 
 ## SDK Boards
 
@@ -77,6 +83,7 @@ This firmware has evolved over time and although originally was purely for bring
 This test code is OPEN SOURCE and formatted for easier viewing. It may be freely used, or modified as needed. You may use as is, use for bring-up development, simply use the bits you like! final use and for full IoT publishing. It is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 
 ## **FLeX Updates**
+  - 251124 - OLED updates for E32/36. Minor updates in testing on EPEM E32.
   - 251022 - Initial 251022 Release for EPEM ATM90E36
 
 **Continual Development**
