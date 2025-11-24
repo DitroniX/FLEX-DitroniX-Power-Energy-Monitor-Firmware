@@ -110,22 +110,14 @@ void DisplayRegisters(boolean DisplayFull = true)
 
     Serial.println("Current CT3: " + String(LineCurrentCT3) + " A");
 
-#if ATM90DEVICE == ATM90E32_DEVICE
-    if (EnableIPEM == true)
-      Serial.println("Current CT4: " + String(LineCurrentCT4) + " A (ESP ADC1 CH7)");
-#endif
-
+#if ATM90DEVICE == ATM90E36_DEVICE
     Serial.println("Current CTN: " + String(LineCurrentCTN) + " A");
+#endif
 
 #if ATM_SPLITPHASE == true
     Serial.println("Actual Total Current: " + String(LineCurrentTotal) + " A (CT1~X~CT3)");
 #else
-#if CT4_ENABLED == true
-    if (EnableIPEM == true)
-      PrintSeparator("Actual Total Current: " + String(LineCurrentTotal) + " A (CT1~CT2~CT3~CT4)");
-#else
     PrintSeparator("Actual Total Current: " + String(LineCurrentTotal) + " A (CT1~CT2~CT3)");
-#endif
 #endif
 
     Serial.println("");

@@ -30,7 +30,7 @@
 #define ATM90E32_DEVICE 32 // Do Not Change
 #define ATM90E36_DEVICE 36 // Do Not Change.   Note: ATM90E36 Formula Values may need Tweaking.
 
-// On IPEM, Set required ATM90E3x device, ATM90E32_DEVICE or ATM90E36_DEVICE
+// On EPEM, Set required ATM90E3x device, ATM90E32_DEVICE or ATM90E36_DEVICE
 #define ATM90DEVICE ATM90E36_DEVICE
 
 // **************** DEFINE VOLTAGE REFERENCE ****************

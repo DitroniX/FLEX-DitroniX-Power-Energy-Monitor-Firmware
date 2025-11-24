@@ -19,14 +19,14 @@
 // ****************  VARIABLES / DEFINES / STATIC / STRUCTURES / CONSTANTS ****************
 
 // Application
-String AppVersion = "251022"; // Internal Firmware Date Code
+String AppVersion = "251125"; // Internal Firmware Date Code
 
 // App USER
 String LocationName = "Test"; // Enter Name Location of Device such as House, Solar etc.  Used for Serial Monitor and OLED.
 
 // Constants USER
 int VoltageRawFactor = 0;                // ADC Raw Adjustment for 2048 @ 1.65V Default 0
-float VoltageFactor = 428;                // Adjust as needed for Calculated ADC Voltage Output. This used for the DC Sensing Voltage.  Default 428
+float VoltageFactor = 428;               // Adjust as needed for Calculated ADC Voltage Output. This used for the DC Sensing Voltage.  Default 428
 const int AverageSamples = 25;           // Average Multi-Samples within Calculate Average Value and Reduce Jitter.  Default 25
 const int AverageDelay = 20;             // Average Multi-Sample Delay within Calculate Average Value and Reduce Jitter. Default 20
 boolean EnableAveraging = true;          // Set to true to enable averaging (ESP32 DCV) within Calculate Average Value and Reduce Jitter.  Default true
@@ -34,9 +34,9 @@ boolean EnableNoiseFilterSquelch = true; // This realtes to NoiseFilterSquelch T
 
 // Constants USER
 const int LoopDelay = 1;                         // Loop Delay in Seconds.  Default 1.
-boolean EnableBasicLoop = false;                  // Set to true to display, in Serial Monitor, loop readings and displaying only one per reset cycle.  Default false.
+boolean EnableBasicLoop = true;                  // Set to true to display, in Serial Monitor, loop readings and displaying only one per reset cycle.  Default false.
 boolean EnableDisplayBoardConfiguration = false; // Set to true to display, in Serial Monitor, board software configuration Information if DisplayFull is true. Default true.
-boolean EnableOLEDLoop = false;                  // Set to true to enable OLED Display in Loop.  Over-ride via I2C Scan.  Check OLED Instance below, for OLED Selection.  Default true.
+boolean EnableOLEDLoop = true;                   // Set to true to enable OLED Display in Loop.  Over-ride via I2C Scan.  Check OLED Instance below, for OLED Selection.  Default true.
 
 // OLED Instance. You will need to select your OLED I2C Display.   Uncomment/Comment as needed.
 GyverOLED<SSD1306_128x32, OLED_NO_BUFFER> oled; // 0.96"
@@ -89,7 +89,7 @@ unsigned short PGAGain = 0b0101010101111111; // PMPGA 0x17  | DPGA Gain = 2 and 
 // Calculations: Base value for 240V is 38800.  To increase/decrease change by Approx. ~100 per 1.0 V RMS.
 // Calculations: Base value for 120V is 20200.  To increase/decrease change by Approx. ~100 per 1.0 V RMS.
 #if ATM_SINGLEVOLTAGE == true
-unsigned short VoltageGain1 = 38800;        // uGain = UgainA | 0x61	0x0002 40500 20000 42620 (10000 = ~60V)
+unsigned short VoltageGain1 = 38300;        // uGain = UgainA | 0x61	0x0002 40500 20000 42620 (10000 = ~60V) Default 38300
 unsigned short VoltageGain2 = VoltageGain1; // Duplicate V1 Values to V2 and V3.
 unsigned short VoltageGain3 = VoltageGain1; // Duplicate V1 Values to V2 and V3.
 #else
@@ -247,6 +247,13 @@ void InitialiseOLED()
     {
       OLEDPrint(AppAcronym, 2, 0);
     }
+
+#if ATM90DEVICE == ATM90E32_DEVICE
+    OLEDPrint("ATM90E32", 2, 2);
+#endif
+#if ATM90DEVICE == ATM90E36_DEVICE
+    OLEDPrint("ATM90E36", 2, 2);
+#endif
 
     oled.update();
     delay(2000);
@@ -622,29 +629,13 @@ void DisplayBoardConfiguration()
 #endif
 
 #if ATM_SPLITPHASE == true
-#if ATM_SINGLEVOLTAGE == false
-#if CT4_CONFIG == CT4_ESP && ATM90DEVICE == ATM90E32_DEVICE || CT4_CONFIG == CT4_ESP
-  // USA 120+120
-  Serial.println("Split AC Voltage:\tDual Input V1 and V3 Enabled - USA Configuration");
-  Serial.println("CT Current Clamps:\tPhase Configured for 1 and 3 + 1 Phase (ESP32)");
-#else
   // USA 120+120
   Serial.println("Split AC Voltage:\tDual Input V1 + V3 Enabled - USA Configuration");
-  Serial.println("CT Current Clamps:\tPhase Configured for 1 and 3 + 1 Phase (I4N)");
-#endif
-#else
-  // Cannot have Split AC Voltage input with Single Voltage Input Selected
-  Serial.println("Split AC Voltage:\tConfiguration Error (Check ATM_SINGLEVOLTAGE)");
-#endif
+  Serial.println("CT Current Clamps:\tPhase Configured for 1 and 3");
 #else
   // World
-#if CT4_CONFIG == CT4_ESP && ATM90DEVICE == ATM90E32_DEVICE || CT4_CONFIG == CT4_ESP && CT4_ENABLED == false
-  Serial.println("Split AC Voltage:\tDisabled");
-  Serial.println("CT Current Clamps:\tConfigured for 1, 2 or 3 Phase");
-#else
   Serial.println("Split AC Voltage:\tDual  or Split Voltage Input Disabled");
   Serial.println("CT Current Clamps:\tConfigured for 1, 2, 3 Phase");
-#endif
 #endif
 
   Serial.println("");
